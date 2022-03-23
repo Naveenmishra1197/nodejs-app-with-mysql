@@ -18,7 +18,7 @@ pipeline{
 		stage('Build for frontend image') {
 
 			steps {
-				sh "docker build -t rajputvikram/frontend:latest FrontEnd/."
+				sh "docker build -t rajputvikram/frontend:v2 FrontEnd/."
 				// sh "docker build -t rajputvikram/frontend:v${env.BUILD_ID} FrontEnd/."
                 // sh "docker tag rajputvikram/frontend:v${env.BUILD_ID} rajputvikram/frontend:latest"
 			}
@@ -52,7 +52,7 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push rajputvikram/frontend:latest'
+				sh 'docker push rajputvikram/frontend:v2'
                 sh 'docker push rajputvikram/backend:latest'
                 sh 'docker push rajputvikram/mysql:latest'
 			}
@@ -61,7 +61,7 @@ pipeline{
 		stage('Remove old images') {
 
 			steps {
-				sh 'docker rmi -f rajputvikram/frontend:latest'
+				sh 'docker rmi -f rajputvikram/frontend:v2'
                 sh 'docker rmi -f rajputvikram/backend:latest'
                 sh 'docker rmi -f rajputvikram/mysql:latest'
 			}

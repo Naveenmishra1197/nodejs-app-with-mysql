@@ -8,6 +8,11 @@ metadata:
   namespace: node-app
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
   selector:
     matchLabels:
       app: my-app
@@ -19,7 +24,7 @@ spec:
         tier: node-frontend
     spec:
       containers:
-        - image: rajputvikram/frontend:latest
+        - image: rajputvikram/frontend:v2
           resources:
             requests:
               cpu: 500m
