@@ -19,7 +19,7 @@ spec:
         tier: mysql
     spec:
       containers:
-        - image: rajputvikram/mysql:latest
+        - image: rajputvikram/mysql:v2
           resources:
             requests:
               cpu: 1000m

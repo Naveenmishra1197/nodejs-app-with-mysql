@@ -19,7 +19,7 @@ spec:
         tier: node-backend
     spec:
       containers:
-        - image: rajputvikram/backend:latest
+        - image: rajputvikram/backend:v2
           resources:
             requests:
               cpu: 500m
