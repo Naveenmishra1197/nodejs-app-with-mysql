@@ -27,7 +27,7 @@ pipeline{
         stage('Build for backend image') {
 
 			steps {
-				sh "docker build -t rajputvikram/backend:latest backend/."
+				sh "docker build -t rajputvikram/backend:v2 backend/."
 				// sh "docker build -t rajputvikram/backend:v${env.BUILD_ID} backend/."
                 // sh "docker tag rajputvikram/backend:v${env.BUILD_ID} rajputvikram/backend:latest"
 			}
@@ -36,7 +36,7 @@ pipeline{
         stage('Build for mysql image') {
 
 			steps {
-				sh "docker build -t rajputvikram/mysql:latest db/."
+				sh "docker build -t rajputvikram/mysql:v2 db/."
 				// sh "docker build -t rajputvikram/mysql:v${env.BUILD_ID} db/."
                 // sh "docker tag rajputvikram/mysql:v${env.BUILD_ID} rajputvikram/mysql:latest"
 			}
@@ -53,8 +53,8 @@ pipeline{
 
 			steps {
 				sh 'docker push rajputvikram/frontend:v2'
-                sh 'docker push rajputvikram/backend:latest'
-                sh 'docker push rajputvikram/mysql:latest'
+                sh 'docker push rajputvikram/backend:v2'
+                sh 'docker push rajputvikram/mysql:v2'
 			}
 		}
 
@@ -62,8 +62,8 @@ pipeline{
 
 			steps {
 				sh 'docker rmi -f rajputvikram/frontend:v2'
-                sh 'docker rmi -f rajputvikram/backend:latest'
-                sh 'docker rmi -f rajputvikram/mysql:latest'
+                sh 'docker rmi -f rajputvikram/backend:v2'
+                sh 'docker rmi -f rajputvikram/mysql:v2'
 			}
 		}
 
